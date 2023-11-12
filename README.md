@@ -13,8 +13,6 @@ This project should help get you started developing with Vue 3 in Vite.
 #### 3. Add download audio url, you can click the url to download current bot last message audio.
 
 
-
-
 ## Project Setup Commands
 
 ```sh
