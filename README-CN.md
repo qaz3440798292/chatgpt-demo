@@ -3,7 +3,7 @@
 这个项目可以让你在 Vite 使用 Vue3 进行开发
 
 # 语言
-### [English](https://github.com/qaz3440798292/chatgpt-demo/blob/README.md) | 简体中文 (中国)
+### [English](https://github.com/qaz3440798292/chatgpt-demo/blob/main/README.md) | 简体中文 (中国)
 
 # 更新日志
 

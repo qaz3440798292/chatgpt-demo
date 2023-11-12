@@ -3,7 +3,7 @@
 This project should help get you started developing with Vue 3 in Vite.
 
 # Languages
-### English | [简体中文 (中国)](https://github.com/qaz3440798292/chatgpt-demo/blob/README-CN.md)
+### English | [简体中文 (中国)](https://github.com/qaz3440798292/chatgpt-demo/blob/main/README-CN.md)
 
 # Update logs
 
