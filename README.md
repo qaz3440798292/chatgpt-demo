@@ -14,7 +14,7 @@ This project should help get you started developing with Vue 3 in Vite.
 
 ___________
 
-## Project Setup Commands
+## Project Setup Command
 
 ```sh
 npm install
