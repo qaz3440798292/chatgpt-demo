@@ -1,34 +1,39 @@
-# chatgpt-demo
+# ChatGPT-Demo
 
-This template should help get you started developing with Vue 3 in Vite.
+This project should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+# Languages
+### English | [简体中文 (中国)](https://github.com/qaz3440798292/chatgpt-demo/blob/README-CN.md)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+# Update logs
 
-## Customize configuration
+### [11/12/2023 19:44]() 
+#### 1. Change the OpenAI base url, and so that Chinsese can to use the ChatGPT demo project.
+#### 2. Optimize the project code.
+#### 3. Add download audio url, you can click the url to download current bot last message audio.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Project Setup
+
+
+## Project Setup Commands
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Run the project in development mode
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Build the project for production
 
 ```sh
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Lint with ESLint
 
 ```sh
 npm run lint
