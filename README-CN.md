@@ -27,7 +27,7 @@ npm install
 npm run dev
 ```
 
-### 构建生产项目
+### 构建项目
 
 ```sh
 npm run build
