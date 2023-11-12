@@ -3,7 +3,11 @@
   import OpenAI from "openai";
 
   // 创建openai对象
-  const openai = new OpenAI({ apiKey: import.meta.env.VITE_OPEN_AI_API_KEY, dangerouslyAllowBrowser: true });
+  const openai = new OpenAI({
+    apiKey: import.meta.env.VITE_OPEN_AI_API_KEY,
+    dangerouslyAllowBrowser: true,
+    baseURL: import.meta.env.VITE_OPEN_AI_BASE_URL
+  });
 
   // 用户输入的内容
   const message = ref("");
