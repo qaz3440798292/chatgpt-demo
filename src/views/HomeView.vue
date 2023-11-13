@@ -31,7 +31,7 @@
       content: message.value
     })
 
-    message.value = ''
+    console.log(message.value);
 
     const response = await openai.chat.completions.create({
       messages: history.value,
@@ -85,11 +85,13 @@
   }
 
   let mediaRecoder // 麦克风
-  let audioChunks = [] // 录制的结果
+  let audioChunks // 录制的结果
   let media = false // 录制状态
 
   // 音频录制
   const mediaDevices = async () => {
+    audioChunks = []
+
     if (!media){
       media = !media
       audio.value = true
@@ -117,6 +119,8 @@
               })
 
               message.value = response.text
+
+              console.log(response.text);
               await textGPT()
             }
 
