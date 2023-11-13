@@ -113,7 +113,9 @@
           })
           .catch(err => {
             console.error('你未进行语音授权，无法使用语音功能', err)
+            alert('你未进行语音授权，无法使用语音功能')
           })
+
     }else {
       media = !media
 
