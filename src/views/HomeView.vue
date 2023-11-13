@@ -21,6 +21,9 @@
   // 是否播放语音
   const audio = ref(false)
 
+  // 允许发送
+  const send = ref(true)
+
   // 文本对话请求
   const textGPT = async () => {
     history.value.push({
@@ -40,8 +43,10 @@
 
     // 判断语音功能是否开启
     if(audio.value){
-      audioGPT()
+      await audioGPT()
     }
+
+    send.value = !send.value
   }
 
   // 语音链接
@@ -52,6 +57,8 @@
     if (audio.value){
       // 创建audio对象进行音频播放
       const audio = new Audio()
+
+      send.value = false
 
       // 发送请求
       const response = await openai.audio.speech.create({
@@ -100,6 +107,8 @@
 
               formData.append('file', audioBlob, 'audio.mp3')
 
+              send.value = false
+
               const response = await openai.audio.transcriptions.create({
                 file: formData.get('file'),
                 model: 'whisper-1'
@@ -135,11 +144,11 @@
     </p>
 
     <input type="text" v-model="message" placeholder="请输入你要发送的内容">
-    <button @click="textGPT">发送</button>
+    <button @click="textGPT" :disabled="!send">发送</button>
     <input type="checkbox" v-model="audio">播放语音
     <button @click="audioGPT">重新播放</button>
     <button @click="clear">清空对话</button>
-    <button @click="mediaDevices">通话</button>
+    <button @click="mediaDevices" :disabled="!send">通话</button>
     <a target="_blank" :href="url" download="speech.mp3">下载音频</a>
   </div>
 </template>
