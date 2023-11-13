@@ -4,9 +4,9 @@
 
   // 创建openai对象
   const openai = new OpenAI({
-    apiKey: import.meta.env.VITE_OPEN_AI_API_KEY,
+    apiKey: import.meta.env.VITE_OPEN_AI_API_KEY, // apiKey请求后端所需的token
     dangerouslyAllowBrowser: true,
-    baseURL: import.meta.env.VITE_OPEN_AI_BASE_URL
+    baseURL: import.meta.env.VITE_OPEN_AI_BASE_URL // 修改默认URL
   });
 
   // 用户输入的内容
@@ -27,6 +27,8 @@
       role: 'user',
       content: message.value
     })
+
+    message.value = ''
 
     const response = await openai.chat.completions.create({
       messages: history.value,
@@ -75,6 +77,53 @@
     history.value = []
   }
 
+  let mediaRecoder
+  let audioChunks = []
+  let media = false
+
+  // 音频录制
+  const mediaDevices = async () => {
+    if (!media){
+      media = !media
+      audio.value = true
+      await navigator.mediaDevices.getUserMedia({ audio: true })
+          .then(stream => {
+            mediaRecoder = new MediaRecorder(stream)
+            mediaRecoder.ondataavailable = e => {
+              audioChunks.push(e.data)
+            }
+
+            mediaRecoder.onstop = async () => {
+              const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' })
+
+              const formData = new FormData()
+
+              formData.append('file', audioBlob, 'audio.mp3')
+
+              const response = await openai.audio.transcriptions.create({
+                file: formData.get('file'),
+                model: 'whisper-1'
+              })
+
+              message.value = response.text
+              await textGPT()
+            }
+
+            mediaRecoder.start()
+          })
+          .catch(err => {
+            console.error('你未进行语音授权，无法使用语音功能', err)
+          })
+    }else {
+      media = !media
+
+      mediaRecoder.stop()
+      mediaRecoder.stream.getTracks().forEach( track => {
+        track.stop()
+      })
+    }
+  }
+
 </script>
 
 <template>
@@ -88,6 +137,7 @@
     <input type="checkbox" v-model="audio">播放语音
     <button @click="audioGPT">重新播放</button>
     <button @click="clear">清空对话</button>
+    <button @click="mediaDevices">通话</button>
     <a target="_blank" :href="url" download="speech.mp3">下载音频</a>
   </div>
 </template>
