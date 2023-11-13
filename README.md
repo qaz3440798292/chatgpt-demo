@@ -8,9 +8,9 @@ This project should help get you started developing with Vue 3 in Vite.
 # Update logs
 
 ### [11/12/2023 19:44]() 
-#### 1. Change the OpenAI base url, and so that Chinsese can to use the ChatGPT demo project to chat with GPT.
-#### 2. Optimize the project code.
-#### 3. Add download audio url, you can click the url to download current bot last message audio.
+1. Change the OpenAI base url, and so that Chinsese can to use the ChatGPT demo project to chat with GPT.
+2. Optimize the project code.
+3. Add download audio url, you can click the url to download current bot last message audio.
 
 ___________
 
