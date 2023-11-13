@@ -84,15 +84,16 @@
     history.value = []
   }
 
-  let mediaRecoder
-  let audioChunks = []
-  let media = false
+  let mediaRecoder // 麦克风
+  let audioChunks = [] // 录制的结果
+  let media = false // 录制状态
 
   // 音频录制
   const mediaDevices = async () => {
     if (!media){
       media = !media
       audio.value = true
+
       await navigator.mediaDevices.getUserMedia({ audio: true })
           .then(stream => {
             mediaRecoder = new MediaRecorder(stream)
@@ -100,6 +101,7 @@
               audioChunks.push(e.data)
             }
 
+            //录制停止事件
             mediaRecoder.onstop = async () => {
               const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' })
 
@@ -118,8 +120,10 @@
               await textGPT()
             }
 
+            //录制开始
             mediaRecoder.start()
           })
+          // 麦克风无授权
           .catch(err => {
             console.error('你未进行语音授权，无法使用语音功能', err)
             alert('你未进行语音授权，无法使用语音功能')
@@ -128,7 +132,10 @@
     }else {
       media = !media
 
+      // 停止录制
       mediaRecoder.stop()
+
+      // 停止所有录制
       mediaRecoder.stream.getTracks().forEach( track => {
         track.stop()
       })
