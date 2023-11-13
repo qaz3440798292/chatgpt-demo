@@ -7,6 +7,9 @@ This project should help get you started developing with Vue 3 in Vite.
 
 # Update logs
 
+### [11/13/2023 11:14]()
+1. Add "Media Recoder", you can click the button to chat with GPT.
+
 ### [11/12/2023 19:44]() 
 1. Change the OpenAI base url, and so that Chinsese can to use the ChatGPT demo project to chat with GPT.
 2. Optimize the project code.
