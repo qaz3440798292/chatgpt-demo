@@ -41,12 +41,12 @@
     history.value.push(response.choices[0].message)
     bot.value = response.choices[0].message
 
+    send.value = !send.value
+
     // 判断语音功能是否开启
     if(audio.value){
       await audioGPT()
     }
-
-    send.value = !send.value
   }
 
   // 语音链接
@@ -143,6 +143,7 @@
       mediaRecoder.stream.getTracks().forEach( track => {
         track.stop()
       })
+
     }
   }
 
